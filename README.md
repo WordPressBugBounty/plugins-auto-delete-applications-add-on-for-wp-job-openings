@@ -1,0 +1,1 @@
+# plugins-auto-delete-applications-add-on-for-wp-job-openings
