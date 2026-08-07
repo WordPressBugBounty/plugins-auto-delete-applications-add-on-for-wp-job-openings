@@ -1,17 +1,17 @@
 <?php
 /**
- * Add-on for WP Job Openings for automatically deleting applications based on the specified time.
+ * Add-on for Hirezoot for automatically deleting applications based on the specified time.
  *
  * @package wp-job-openings
  */
 
 /**
- * Plugin Name: Auto Delete Applications - Add-on for WP Job Openings
- * Plugin URI: https://wpjobopenings.com/
- * Description: This is an add-on for WP Job Openings Plugin, which will let you delete the received applications periodically.
+ * Plugin Name: Auto Delete Applications - Add-on for Hirezoot
+ * Plugin URI: https://hirezoot.com/
+ * Description: This is an add-on for Hirezoot Plugin, which will let you delete the received applications periodically.
  * Author: AWSM Innovations
  * Author URI: https://awsm.in/
- * Version: 1.0.3
+ * Version: 1.0.4
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text domain: auto-delete-wp-job-openings
@@ -35,6 +35,8 @@ if ( ! defined( 'AWSM_JOBS_ADL_MAIN_REQ_VERSION' ) ) {
 if ( ! defined( 'AWSM_JOBS_ADL_PLUGIN_BASENAME' ) ) {
 	define( 'AWSM_JOBS_ADL_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 }
+
+if ( ! class_exists( 'AWSM_Job_Openings_Auto_Delete_Addon' ) ) {
 
 class AWSM_Job_Openings_Auto_Delete_Addon {
 	private static $instance = null;
@@ -141,8 +143,8 @@ class AWSM_Job_Openings_Auto_Delete_Addon {
 		<div class="updated error">
 				<p>
 					<?php
-						$req_plugin = sprintf( '<strong>"%s"</strong>', esc_html__( 'WP Job Openings', 'wp-job-openings' ) );
-						$plugin     = sprintf( '<strong>"%s"</strong>', esc_html__( 'Auto Delete Applications - Add-on for WP Job Openings', 'auto-delete-wp-job-openings' ) );
+						$req_plugin = sprintf( '<strong>"%s"</strong>', esc_html__( 'HireZoot', 'wp-job-openings' ) );
+						$plugin     = sprintf( '<strong>"%s"</strong>', esc_html__( 'Auto Delete Applications - Add-on for HireZoot', 'auto-delete-wp-job-openings' ) );
 					if ( $is_default ) {
 						/* translators: %1$s: main plugin, %2$s: current plugin, %3$s: plugin activation link, %4$s: line break */
 						printf( esc_html__( 'The plugin %2$s needs the plugin %1$s active. %4$s Please %3$s %1$s', 'auto-delete-wp-job-openings' ), $req_plugin, $plugin, $this->get_main_plugin_activation_link(), '<br />' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -306,6 +308,7 @@ class AWSM_Job_Openings_Auto_Delete_Addon {
 			}
 		}
 	}
+}
 }
 
 $auto_delete_addon = AWSM_Job_Openings_Auto_Delete_Addon::init();
